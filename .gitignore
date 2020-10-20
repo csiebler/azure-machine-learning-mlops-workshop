@@ -1,6 +1,6 @@
 # AML-specific
-
 .azureml/
+temp/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
