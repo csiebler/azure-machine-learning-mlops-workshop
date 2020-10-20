@@ -6,10 +6,10 @@ from azureml.pipeline.steps import PythonScriptStep
 from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
 
 # AML Pipeline defaults (hardcoded for the sake of the workshop)
-source_directory = "pipelines-single-training-step/"
-default_training_dataset = Dataset.get_by_name(ws, "german-credit-train-tutorial")
+source_directory = 'pipelines-single-training-step/'
+default_dataset_name = 'german-credit-train-tutorial'
 
-print("Azure ML SDK version:", azureml.core.VERSION)
+print(f'Azure ML SDK version: {azureml.core.VERSION}')
 
 # Connect to the workspace
 ws = Workspace.from_config()
@@ -18,16 +18,18 @@ print(f'Region: {ws.location}')
 print(f'Subscription id: {ws.subscription_id}')
 print(f'Resource group: {ws.resource_group}')
 
+default_training_dataset = Dataset.get_by_name(ws, default_dataset_name)
+
 # Parametrize dataset input to the pipeline
-training_dataset_parameter = PipelineParameter(name="training_dataset", default_value=default_training_dataset)
-training_dataset_consumption = DatasetConsumptionConfig("training_dataset", training_dataset_parameter).as_download()
+training_dataset_parameter = PipelineParameter(name='training_dataset', default_value=default_training_dataset)
+training_dataset_consumption = DatasetConsumptionConfig('training_dataset', training_dataset_parameter).as_download()
 
 # Load runconfig from earlier exercise and create pipeline
-runconfig = RunConfiguration.load(os.path.join(source_directory, "runconfig.yml"))
+runconfig = RunConfiguration.load(os.path.join(source_directory, 'runconfig.yml'))
 
-train_step = PythonScriptStep(name="train-step",
+train_step = PythonScriptStep(name='train-step',
                         source_directory=source_directory,
-                        script_name="train.py",
+                        script_name='train.py',
                         arguments=['--data-path', training_dataset_consumption],
                         inputs=[training_dataset_consumption],
                         runconfig=runconfig,
