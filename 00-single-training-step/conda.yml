@@ -1,0 +1,12 @@
+name: workshop-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6.2
+  - pip:
+    - azureml-defaults
+    - azureml-dataprep[pandas,fuse] # Required for parallel batch scoring (ParallelRunStep)
+    - scikit-learn==0.20.3
+    - pandas==0.25.3
+    - joblib==0.13.2
