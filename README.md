@@ -22,4 +22,4 @@ A workshop for doing MLOps on Azure Machine Learning.
   * :weight_lifting: Exercise - ParallelRunStep pipeline for batch scoring - [`pipelines-parallel-run-step`](pipelines-parallel-run-step/)
 * MLOps on Azure DevOps
   * :weight_lifting_woman: Exercise - Deploy AML pipeline as endpoint - [`devops-deploy-pipeline-simple`](devops-deploy-pipeline-simple/)
-  * :weight_lifting_woman: Exercise - Deploy AML pipeline as endpoint (with basic tests) - [``]()
+  * :weight_lifting_woman: Exercise - Deploy AML pipeline as endpoint (with basic tests) - [`devops-deploy-pipeline-with-tests`](devops-deploy-pipeline-with-tests/)
