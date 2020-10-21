@@ -1,5 +1,15 @@
 # Exercise Instructions
 
+## Prerequisites
+
+Before starting with the exercises, make sure that you have the following in place:
+
+* An Azure Machine Learning workspace
+   * Follow this [tutorial](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace#create-a-workspace), no need to configure the networking section!
+* A Compute Instance, running in your workspace (`Standard_D2_v2` is sufficient)
+  * Goto [AML Studio (https://ml.azure.com)](https://ml.azure.com), sign-in, then select `Compute`, then `Compute instance` and click `Create`
+  * Give it any name, select `Standard_D2_v2` as size and hit create - done!
+
 ## Running this on a Compute Instance (recommended)
 
 We recommend to run these exercises on a Compute Instance on Azure Machine Learning. To get started, open Jupyter or JupyterLab on the Compute Instance, select `New --> Terminal` (upper right corner) and clone this repo:
