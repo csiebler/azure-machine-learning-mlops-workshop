@@ -26,7 +26,9 @@ Then navigate to the cloned folder in Jupyter, and open [`pipeline.ipynb`](pipel
 **Question:** From where does `train_step = PythonScriptStep(name="train-step", ...)` know which Python dependencies to use?
 <details>
   <summary>See solution!</summary>
+
   :white_check_mark: It uses the file `runconfig.yml`, which further defines the step's configuration. The runconfig points to `condaDependenciesFile: conda.yml`, which defines the conda enviroment, in which this step is executed in. We could have defined all this in Python, but having the conda enviroment in a separate file, allows us to easier test this locally, e.g., by using:
+
   ```
   conda env create -f conda.yml
   python train.py --data-path ../data-training
@@ -36,21 +38,24 @@ Then navigate to the cloned folder in Jupyter, and open [`pipeline.ipynb`](pipel
 **Question:** How can we make a compute cluster scale down quicker/slower?
 <details>
   <summary>See solution!</summary>
-  :white_check_mark: We can adapt `idle_seconds_before_scaledown=3600`, which defines the idle time until the cluster scales down to 0 nodes.
+
+  :white_check_mark: We can adapt <code>idle_seconds_before_scaledown=3600</code>, which defines the idle time until the cluster scales down to 0 nodes.
 </details>
 
 **Question:** From where does `ws = Workspace.from_config()` how to which workspace it needs to connect??
 <details>
   <summary>See solution!</summary>
-  :white_check_mark: The call `Workspace.from_config()` has the following behaviour:
+
+  :white_check_mark: The call <code>Workspace.from_config()</code> has the following behaviour:
   * Inside a Compute Instance, it resolves to the workspace of the current instance
-  * If a `config.json` file is present, it loads the workspace reference from there (you can download this file from the Studio UI, by clicking the book icon on the upper right):
-    ```
-        {
-            "subscription_id": "*****",
-            "resource_group": "aml-mlops-workshop",
-            "workspace_name": "aml-mlops-workshop"
-        }
-    ```
-  * Use the az CLI to connect to the workspace and use the workspace attached to via `az ml folder attach -g <resource group> -w <workspace name>`
+  * If a <code>config.json</code> file is present, it loads the workspace reference from there (you can download this file from the Studio UI, by clicking the book icon on the upper right):
+
+```json
+    {
+        "subscription_id": "*****",
+        "resource_group": "aml-mlops-workshop",
+        "workspace_name": "aml-mlops-workshop"
+    }
+```
+  * Use the az CLI to connect to the workspace and use the workspace attached to via <code>az ml folder attach -g <resource group> -w <workspace name></code>
 </details>
