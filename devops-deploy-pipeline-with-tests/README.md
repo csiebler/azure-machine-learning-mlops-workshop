@@ -15,7 +15,7 @@ This DevOps pipeline is used to the automatically deploy and test the Python-bas
     workspace: 'aml-mlops-workshop' # replace with your workspace name (same as you've used for the Service Connection)
     aml_compute_target: 'cpu-cluster'
   ```
-1. Review the YAML file, this CI/CD pipeline has eight key steps (first six are the same as in the prior exercise):
+1. Review the YAML file, this CI/CD pipeline has nine key steps (first six are the same as in the prior exercise):
     * Set Python version on the build agent
     * Install Azure Machine Learning CLI (primarily used for authentication to workspace in this example)
     * Attach folder to workspace for authentication
@@ -23,6 +23,7 @@ This DevOps pipeline is used to the automatically deploy and test the Python-bas
     * Publish pipeline for model training
     * Run a test dataset through the pipeline using `pytest`
     * Publish the test results
+    * Add tested pipeline to a pipeline endpoint, so that the URL of the pipeline stays the same
 1. Select `Run` to save and run the pipeline.
 
 Lastly, navigate to the AML Studio UI and you should fine your pipeline under `Endpoints -> Pipeline Endpoints` (same as before). Once your pipeline finished, you can also investigate the test results. For this, goto the pipeline, select the run, and then select the `Tests` tab (next to the `Summary` tab).

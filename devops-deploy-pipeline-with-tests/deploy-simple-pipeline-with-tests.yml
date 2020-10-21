@@ -64,7 +64,7 @@ steps:
     scriptLocation: inlineScript
     scriptType: bash
     inlineScript: |
-      python devops-deploy-pipeline-simple/deploy_pipeline.py
+      python devops-deploy-pipeline-with-tests/deploy_pipeline.py
 
 - task: AzureCLI@2
   displayName: 'Test training pipeline functionally with small training dataset'
@@ -81,3 +81,13 @@ steps:
   displayName: 'Publish test results from pipeline test run'
   inputs:
     testRunTitle: 'Test results for published pipeline'
+
+- task: AzureCLI@2
+  displayName: 'Add pipeline to Pipeline Endpoint'
+  inputs:
+    azureSubscription: '$(aml_service_connection)'
+    scriptLocation: inlineScript
+    scriptType: bash
+    inlineScript: |
+      export PIPELINE_ID=$(pipeline_id)
+      python devops-deploy-pipeline-with-tests/add_to_pipeline_endpoint.py
