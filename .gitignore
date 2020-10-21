@@ -2,6 +2,8 @@
 .azureml/
 temp/
 outputs/
+run.json
+model.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
