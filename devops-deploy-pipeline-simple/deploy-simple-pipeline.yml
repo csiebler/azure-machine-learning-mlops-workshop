@@ -9,8 +9,8 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  resourcegroup: 'aml-mlops-workshop'
-  workspace: 'aml-mlops-workshop'
+  resourcegroup: 'aml-mlops-workshop' # replace with your resource group (same as you've used for the Service Connection)
+  workspace: 'aml-mlops-workshop' # replace with your workspace name (same as you've used for the Service Connection)
   aml_compute_target: 'cpu-cluster'
 
   # Azure Resource Manager connection created during pipeline creation
