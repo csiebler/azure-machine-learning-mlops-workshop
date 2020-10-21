@@ -33,7 +33,7 @@ This DevOps pipeline is used to the automatically deploy the Python-based ML tra
 1. Select `Pipelines --> Pipelines` (rocket icon) and select `Create pipeline`
 1. (Connect step) - Choose `Azure Repos Git`
 1. (Select step) - Select your repo (there should only be one named after your project)
-1. (Configure step) - Select `Existing Azure Pipelines YAML file` and choose the path to the file `/devops-deploy-pipeline-simple/deploy-simple-pipeline.yml`
+1. (Configure step) - Select `Existing Azure Pipelines YAML file` and choose the path to the file `/devops-deploy-simple-pipeline/deploy-simple-pipeline.yml`
 1. In the upcoming preview window, update the `variables` section (if you've used the defaults, this should not require any changes): 
   ```yaml
   variables:

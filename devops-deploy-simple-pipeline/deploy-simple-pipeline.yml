@@ -61,4 +61,4 @@ steps:
     scriptLocation: inlineScript
     scriptType: bash
     inlineScript: |
-      python devops-deploy-pipeline-simple/deploy_pipeline.py
+      python devops-deploy-simple-pipeline/deploy_pipeline.py
