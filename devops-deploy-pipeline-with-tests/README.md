@@ -1,5 +1,8 @@
 # Exercise Instructions
 
+In this execise, we'll deploy a DevOps pipeline that will enable the following scenario:
+![Pipeline With Testing Drawing](../media/pipline_with_testing.png)
+
 ## Import `deploy-simple-pipeline-with-tests.yml` pipeline
 
 This DevOps pipeline is used to the automatically deploy and test the Python-based ML training pipeline we've created in one of the earlier exercises.

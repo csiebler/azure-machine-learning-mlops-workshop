@@ -1,5 +1,8 @@
 # Exercise Instructions
 
+In this execise, we'll deploy a DevOps pipeline that will enable the following scenario:
+![Simple Pipeline Drawing](../media/simple_pipeline.png)
+
 ## Create a new Azure DevOps project
 
 1. Sign in to [Azure DevOps](http://dev.azure.com)
