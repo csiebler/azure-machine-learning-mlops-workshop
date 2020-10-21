@@ -23,8 +23,8 @@ A workshop for doing MLOps on Azure Machine Learning.
   * :weight_lifting: Exercise - Multi-step pipeline with parameters - [`pipelines-multi-step-pipeline`](pipelines-multi-step-pipeline/)
   * :weight_lifting: Exercise - ParallelRunStep pipeline for batch scoring - [`pipelines-parallel-run-step`](pipelines-parallel-run-step/)
 * MLOps on Azure DevOps
-  * :weight_lifting_woman: Exercise - Deploy AML pipeline as endpoint - [`devops-deploy-simple-pipeline`](devops-deploy-simple-pipeline/)
-  * :weight_lifting_woman: Exercise - Deploy AML pipeline as endpoint (with basic tests) - [`devops-deploy-pipeline-with-tests`](devops-deploy-pipeline-with-tests/)
+  * :weight_lifting_woman: Exercise - Deploy AML pipeline as Published Endpoint - [`devops-deploy-simple-pipeline`](devops-deploy-simple-pipeline/)
+  * :weight_lifting_woman: Exercise - Deploy AML pipeline as Published Endpoint, automatically test it and then add it to a Pipeline Endpoint - [`devops-deploy-pipeline-with-tests`](devops-deploy-pipeline-with-tests/)
 * Model Deployment
   * :weight_lifting_woman: Exercise - Deploy model to ACI and AKS using the AML CLI - [`deployment-using-cli`](deployment-using-cli/)
 
