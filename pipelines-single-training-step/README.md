@@ -42,7 +42,7 @@ python train.py --data-path ../data-training
 We can adapt `idle_seconds_before_scaledown=3600`, which defines the idle time until the cluster scales down to 0 nodes.
 </details>
 
-:question: **Question:** From where does `ws = Workspace.from_config()` how to which workspace it needs to connect??
+:question: **Question:** From where does `ws = Workspace.from_config()` how to which workspace it needs to connect?
 <details>
   <summary>:white_check_mark: See solution!</summary>
 
@@ -58,4 +58,12 @@ The call `Workspace.from_config()` has the following behaviour:
 }
 ```
 * Use the az CLI to connect to the workspace and use the workspace attached to via `az ml folder attach -g <resource group> -w <workspace name>`
+</details>
+
+:question: **Question:** What is the difference between `PublishedPipeline` and `PipelineEndpoint`?
+<details>
+  <summary>:white_check_mark: See solution!</summary>
+
+* [`PublishedPipeline`](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) allows to publish a pipeline as a RESTful API endpoint, from which it can be invoked. Each `PublishedPipeline` will have a new URL endpoint.
+* [`PipelineEndpoint`](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineendpoint?view=azure-ml-py) allows to "hide" multiple `PublishedPipeline`s behind a single URL and routes the request to a specific default version. This enables to continously update the `PipelineEndpoint` with new `PublishedPipeline`s while the URL stays the same. Hence, the consumer will not notice that the pipeline got "swapped out", "replaced" or "changed". This is very helpful when we want to test pipelines before we release or hand them over to the pipeline consumer.
 </details>
