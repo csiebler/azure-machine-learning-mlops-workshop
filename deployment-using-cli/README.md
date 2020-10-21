@@ -138,3 +138,64 @@ sslEnabled: False
 The config for AKS is more granular, as it allows for auto-scaling and replication of the running container(s). Full details for the AKS config can be found [here](https://docs.microsoft.com/en-us/azure/machine-learning/reference-azure-machine-learning-cli#azure-kubernetes-service-deployment-configuration-schema).
 Full details for the config of ACI can be found [here](https://docs.microsoft.com/en-us/azure/machine-learning/reference-azure-machine-learning-cli#azure-container-instance-deployment-configuration-schema).
 </details>
+
+# Extra Exercise
+
+Use the provided code here to build a Azure DevOps pipeline, that deploys the model to ACI using the CLI. You can query a models latest version using ``LATEST_VERSION=`az ml model list -n $(model-name) --query '[0].version'` ``, which will automatically assign the version number to a variable called `$LATEST_VERSION`.
+
+<details>
+  <summary>:white_check_mark: See YAML pipeline solution!</summary>
+
+In Azure DevOps, goto Pipelines and create a new pipeline. Select `Azure Repos Git` and select your project's repo. Then select Start pipeline and replace its code with the following pipeline code:
+
+```yaml
+# Disabled for the sake of this workshop
+trigger:
+- none
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+variables:
+  resourcegroup: 'aml-mlops-workshop' # replace with your resource group (same as you've used for the Service Connection)
+  workspace: 'aml-mlops-workshop' # replace with your workspace name (same as you've used for the Service Connection)
+  model-name: 'credit-model'
+
+  # Azure Resource Manager connection created during pipeline creation
+  aml_service_connection: 'aml_workspace'
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Install the az ml CLI'
+  inputs:
+    azureSubscription: '$(aml_service_connection)'
+    scriptLocation: inlineScript
+    scriptType: bash
+    inlineScript: |
+      az extension add -n azure-cli-ml
+
+- task: AzureCLI@2
+  displayName: 'Attach folder to AML workspace (authenticate)'
+  inputs:
+    azureSubscription: '$(aml_service_connection)'
+    scriptLocation: inlineScript
+    scriptType: bash
+    inlineScript: |
+      az ml folder attach -w $(workspace) -g $(resourcegroup)
+
+- task: AzureCLI@2
+  displayName: 'Deploy model to ACI'
+  inputs:
+    azureSubscription: '$(aml_service_connection)'
+    scriptLocation: inlineScript
+    scriptType: bash
+    workingDirectory: deployment-using-cli/
+    inlineScript: |
+      LATEST_VERSION=`az ml model list -n $(model-name) --query '[0].version'`
+      az ml model deploy -n credit-model-aci -m $(model-name):$LATEST_VERSION \
+        --inference-config-file config/inference-config.yml \
+        --deploy-config-file config/deployment-config-aci-qa.yml \
+        --overwrite
+```
+Lastly, run it and check if your model was deployed successfully.
+</details>
