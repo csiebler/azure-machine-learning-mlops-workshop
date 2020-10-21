@@ -141,7 +141,8 @@ Full details for the config of ACI can be found [here](https://docs.microsoft.co
 
 # Extra Exercise
 
-Use the provided code here to build a Azure DevOps pipeline, that deploys the model to ACI using the CLI. You can query a models latest version using ``LATEST_VERSION=`az ml model list -n $(model-name) --query '[0].version'` ``, which will automatically assign the version number to a variable called `$LATEST_VERSION`.
+Use the provided code here to build a Azure DevOps pipeline, that deploys the model to ACI using the CLI. You can query a models latest version using ``LATEST_VERSION=`az ml model list -n $(model-name) --query '[0].version'` ``, which will automatically assign the version number to a variable called `$LATEST_VERSION`. The pipeline should do something like this:
+![Deployment Pipeline Drawing](../media/deployment_pipeline.png)
 
 <details>
   <summary>:white_check_mark: See YAML pipeline solution!</summary>
