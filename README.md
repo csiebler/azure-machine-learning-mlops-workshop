@@ -16,6 +16,8 @@ A workshop for doing MLOps on Azure Machine Learning.
 
 ## Hands-On Parts
 
+:pushpin: Please follow the hands-on exercise in the proposed order, as they build on each other.
+
 * AML Pipelines
   * :weight_lifting: Exercise - Single-step pipeline - [`pipelines-single-training-step`](pipelines-single-training-step/)
   * :weight_lifting: Exercise - Multi-step pipeline with parameters - [`pipelines-multi-step-pipeline`](pipelines-multi-step-pipeline/)
