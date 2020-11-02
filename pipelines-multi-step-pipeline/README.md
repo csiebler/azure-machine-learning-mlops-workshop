@@ -1,6 +1,6 @@
 # Exercise Instructions
 
-Open [`pipeline.ipynb`](pipeline.ipynb) and follow the instructions in the notebook.
+Open [`multi_step_pipeline.ipynb`](multi_step_pipeline.ipynb) and follow the instructions in the notebook.
 
 # Knowledge Check
 

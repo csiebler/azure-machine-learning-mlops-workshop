@@ -19,15 +19,16 @@ git clone https://github.com/csiebler/azure-machine-learning-mlops-workshop.git
 cd azure-machine-learning-mlops-workshop/
 ```
 
-Then navigate to the cloned folder in Jupyter, and open [`pipeline.ipynb`](pipeline.ipynb) from this exercise. In case you're asked for a kernel, please use the `Python 3.6 - AzureML` kernel that comes with the Compute Instance.
+Then navigate to the cloned folder in Jupyter, and open [`single_step_pipeline.ipynb`](single_step_pipeline.ipynb) from this exercise. In case you're asked for a kernel, please use the `Python 3.6 - AzureML` kernel that comes with the Compute Instance.
 
 ## Running this on your own machine
 
+1. Provision an Azure Machine Learning Workspace in Azure
 1. Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 1. Login to your Azure subscription via `az login`
-1. Make sure you are in the correct subscription:
+1. Make sure you are in the correct subscription (the one of your workspace):
     * `az account list` lists all your subscriptions
-    * `az account set -s '<SUBSCRIPTION_ID or NAME>'` sets the default one, that the CLI should use
+    * `az account set -s '<SUBSCRIPTION_ID or NAME>'` sets the default one that the CLI should use
 1. Install the Azure Machine Learning CLI extensive via `az extension add -n azure-cli-ml`
 1. Clone this repo via `git clone https://github.com/csiebler/azure-machine-learning-mlops-workshop.git`
 1. Navigate into the repo `cd azure-machine-learning-mlops-workshop/`
