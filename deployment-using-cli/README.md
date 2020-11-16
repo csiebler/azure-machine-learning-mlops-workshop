@@ -147,7 +147,7 @@ Use the provided code here to build a Azure DevOps pipeline, that deploys the mo
 <details>
   <summary>:white_check_mark: See YAML pipeline solution!</summary>
 
-In Azure DevOps, goto Pipelines and create a new pipeline. Select `Azure Repos Git` and select your project's repo. Then select Start pipeline and replace its code with the following pipeline code:
+In Azure DevOps, goto Pipelines and create a new pipeline. Select `Azure Repos Git` and select your project's repo. Then select Start pipeline and replace its code with the following pipeline code (alternatively, you can just point to the pipeline under `deployment-using-cli/solution/deploy_model.yml`):
 
 ```yaml
 # Disabled for the sake of this workshop
