@@ -1,6 +1,6 @@
 # Exercise Instructions
 
-To be written
+Open [`hyperdrive_pipeline.ipynb`](hyperdrive_pipeline.ipynb) and follow the instructions in the notebook.
 
 # Running this via CLI
 
