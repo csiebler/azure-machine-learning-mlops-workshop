@@ -16,9 +16,11 @@ In this case:
 * [`hyperdrive.runconfig`](hyperdrive.runconfig) holds the general script definition (which dataset, cluster, etc.)
 * [`train.py`](train.py) takes all the hyperparameters as argument inputs
 
-You can check the results in the Studio UI:
+You can check the results in the Studio UI (navigate to the run, then select `Child Runs`):
 
 ![Hyperdrive in Studio UI](../media/hyperdrive_example.png)
+
+Each Hyperparameter permutation is its own child run.
 
 # Knowledge Check
 
