@@ -4,7 +4,8 @@ import argparse
 import joblib
 import pandas as pd
 
-from azureml.core import Run
+import mlflow
+import mlflow.sklearn
 
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
@@ -15,7 +16,6 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import StandardScaler
 
-
 def get_runtime_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data-path', type=str)
@@ -24,17 +24,21 @@ def get_runtime_args():
 
 def main():
     args = get_runtime_args()
-    run = Run.get_context()
+    
+    # Enable mlflow autologging
+    mlflow.sklearn.autolog()
 
     credit_data_df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
-    clf = train_model(credit_data_df, run)
+    
+    with mlflow.start_run():
+        clf = train_model(credit_data_df)
 
     #copying to "outputs" directory, automatically uploads it to Azure ML
     output_dir = './outputs/'
     os.makedirs(output_dir, exist_ok=True)
     joblib.dump(value=clf, filename=os.path.join(output_dir, 'model.pkl'))
 
-def train_model(ds_df, run):
+def train_model(ds_df):
 
     ds_df.drop("Sno", axis=1, inplace=True)
 
@@ -76,9 +80,9 @@ def train_model(ds_df, run):
     print("Training accuracy: %.3f" % train_acc)
     print("Test data accuracy: %.3f" % test_acc)
 
-    # Log to Azure ML
-    run.log('Train accuracy', train_acc)
-    run.log('Test accuracy', test_acc)
+    # Log to Azure ML via mlflow (in case autolog isn't enough)
+    mlflow.log_metric('Train accuracy', train_acc)
+    mlflow.log_metric('Test accuracy', test_acc)
 
     return lr_clf
 

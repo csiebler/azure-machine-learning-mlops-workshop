@@ -5,7 +5,8 @@ channels:
 dependencies:
   - python=3.8.5
   - pip:
-    - azureml-defaults>=1.20.0
+    - azureml-mlflow==1.20.0.post1
     - scikit-learn==0.24.1
     - pandas==1.2.1
     - joblib==1.0.0
+    - matplotlib==3.3.3
