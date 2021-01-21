@@ -6,17 +6,17 @@ This exercise shows how to register and deploy a model using the `az ml` CLI. I'
 
 Let's first set the default workspace and resource group for the folder we are in. This will also include subfolders and later allows us to not always having to specify the workspace and resource group in each call.
 
-```cli
+```console
 cd azure-machine-learning-mlops-workshop/
 az ml folder attach -g <your resource group> -w <your workspace name>
-cd deployment-using-cli/
+cd cli-deployment/
 ```
 
 ## Using the CLI for model registration
 
 Let's first register the model using the CLI:
 
-```cli
+```console
 az ml model register --name credit-model --model-path model.pkl
 ```
 
@@ -26,7 +26,7 @@ The model should now show up in the Studio UI under `Models`.
 
 Now, we can deploy our model to Azure. We'll start with deployment to Azure Container Instances (ACI):
 
-```cli
+```console
 az ml model deploy -n credit-model-aci -m credit-model:1 --inference-config-file config/inference-config.yml --deploy-config-file config/deployment-config-aci-qa.yml --overwrite
 ```
 
@@ -66,13 +66,13 @@ print("Prediction (good, bad):", response.text)
 
 Before we can deploy to Azure Kubernetes Service (AKS), we first need to create a small cluster (we use `DevTest` for a single node cluster):
 
-```cli
+```console
 az ml computetarget create aks --name aks-cluster --cluster-purpose DevTest
 ```
 
 Now, we can deploy to it - only difference is that we use a differnet deployment config and are required to specify to which cluster we want to deploy:
 
-```cli
+```console
 az ml model deploy -n credit-model-aks -m credit-model:1 --compute-target aks-cluster --inference-config-file config/inference-config.yml --deploy-config-file config/deployment-config-aks-prod.yml --overwrite
 ```
 
@@ -81,7 +81,7 @@ az ml model deploy -n credit-model-aks -m credit-model:1 --compute-target aks-cl
 
 Finally, we can retrieve the API key through the CLI or reveal it in the Studio UI:
 
-```cli
+```console
 az ml endpoint realtime get-keys -n credit-model-aks
 ```
 
@@ -91,14 +91,14 @@ We can test the AKS endpoint with the sample code in [`test_webservice.ipynb`](t
 
 We can remove the model deployments via:
 
-```cli
+```console
 az ml service delete --name credit-model-aci
 az ml service delete --name credit-model-aks
 ```
 
 And our AKS cluster via:
 
-```cli
+```console
 az ml computetarget delete -n aks-cluster
 ```
 
@@ -147,7 +147,7 @@ Use the provided code here to build a Azure DevOps pipeline, that deploys the mo
 <details>
   <summary>:white_check_mark: See YAML pipeline solution!</summary>
 
-In Azure DevOps, goto Pipelines and create a new pipeline. Select `Azure Repos Git` and select your project's repo. Then select Start pipeline and replace its code with the following pipeline code (alternatively, you can just point to the pipeline under `deployment-using-cli/solution/deploy_model.yml`):
+In Azure DevOps, goto Pipelines and create a new pipeline. Select `Azure Repos Git` and select your project's repo. Then select Start pipeline and replace its code with the following pipeline code (alternatively, you can just point to the pipeline under `cli-deployment/solution/deploy_model.yml`):
 
 ```yaml
 # Disabled for the sake of this workshop
@@ -190,7 +190,7 @@ steps:
     azureSubscription: '$(aml_service_connection)'
     scriptLocation: inlineScript
     scriptType: bash
-    workingDirectory: deployment-using-cli/
+    workingDirectory: cli-deployment/
     inlineScript: |
       LATEST_VERSION=`az ml model list -n $(model-name) --query '[0].version'`
       az ml model deploy -n credit-model-aci -m $(model-name):$LATEST_VERSION \

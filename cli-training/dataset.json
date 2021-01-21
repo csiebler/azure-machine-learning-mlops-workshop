@@ -1,0 +1,17 @@
+{
+    "datasetType": "File",
+    "parameters": {
+      "path": [
+        {
+          "datastoreName": "workspaceblobstore",
+          "relativePath": "cli-training-tutorial/"
+        }
+      ]
+    },
+    "registration": {
+        "name": "cli-training-tutorial",
+        "description": "Dataset for CLI tutorials",
+        "createNewVersion": true
+    },
+    "schemaVersion": 1
+  }

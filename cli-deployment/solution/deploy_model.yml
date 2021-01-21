@@ -38,7 +38,7 @@ steps:
     azureSubscription: '$(aml_service_connection)'
     scriptLocation: inlineScript
     scriptType: bash
-    workingDirectory: deployment-using-cli/
+    workingDirectory: cli-deployment/
     inlineScript: |
       LATEST_VERSION=`az ml model list -n $(model-name) --query '[0].version'`
       az ml model deploy -n credit-model-aci -m $(model-name):$LATEST_VERSION \

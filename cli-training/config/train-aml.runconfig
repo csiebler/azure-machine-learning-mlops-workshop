@@ -1,0 +1,26 @@
+script: train.py
+arguments: [--data-path, /data]
+target: cpu-cluster
+framework: Python
+environment:
+  environmentVariables:
+    EXAMPLE_ENV_VAR: EXAMPLE_VALUE
+  python:
+    userManagedDependencies: false
+    interpreterPath: python
+    condaDependenciesFile: config/conda.yml
+  docker:
+    enabled: true
+    baseImage: mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+    sharedVolumes: true
+data:
+  training_dataset:
+    dataLocation:
+      dataset:
+        name: cli-training-tutorial
+        version: 1
+    mechanism: download
+    pathOnCompute: /data
+    environmentVariableName: training_dataset
+    createOutputDirectories: false
+    overwrite: false

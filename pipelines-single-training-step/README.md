@@ -14,7 +14,7 @@ Before starting with the exercises, make sure that you have the following in pla
 
 We recommend to run these exercises on a Compute Instance on Azure Machine Learning. To get started, open Jupyter or JupyterLab on the Compute Instance, select `New --> Terminal` (upper right corner) and clone this repo:
 
-```cli
+```console
 git clone https://github.com/csiebler/azure-machine-learning-mlops-workshop.git
 cd azure-machine-learning-mlops-workshop/
 ```
