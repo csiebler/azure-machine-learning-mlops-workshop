@@ -2,7 +2,7 @@ import os
 import argparse
 import pandas as pd
 
-def getRuntimeArgs():
+def get_runtime_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data-input-path', type=str)
     parser.add_argument('--data-output-path', type=str)
@@ -10,7 +10,7 @@ def getRuntimeArgs():
     return args
 
 def main():
-    args = getRuntimeArgs()
+    args = get_runtime_args()
 
     # Create output dir
     os.makedirs(args.data_output_path, exist_ok=True)

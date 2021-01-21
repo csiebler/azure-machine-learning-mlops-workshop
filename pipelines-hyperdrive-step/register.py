@@ -6,14 +6,14 @@ import azureml.core
 from azureml.core import Run
 from azureml.pipeline.steps.hyper_drive_step import HyperDriveStepRun
 
-def getRuntimeArgs():
+def get_runtime_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name', type=str)
     args = parser.parse_args()
     return args
 
 def main():
-    args = getRuntimeArgs()
+    args = get_runtime_args()
     model_name = args.model_name
     
     # current run is the registration step

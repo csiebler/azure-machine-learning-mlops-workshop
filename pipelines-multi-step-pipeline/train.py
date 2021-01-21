@@ -16,7 +16,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import StandardScaler
 
 
-def getRuntimeArgs():
+def get_runtime_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data-path', type=str)
     args = parser.parse_args()
@@ -24,7 +24,7 @@ def getRuntimeArgs():
 
 
 def main():
-    args = getRuntimeArgs()
+    args = get_runtime_args()
     run = Run.get_context()
 
     credit_data_df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
