@@ -128,11 +128,15 @@ This will allow you to quickly offload model training to AML.
 
 ## Registering a model from the CLI
 
+You can register the model within the run through the following command:
+
 ```console
 az ml model register --name test-model --asset-path outputs/model.pkl --run-metadata-file run.json
 ```
 
 ## Cleanup
+
+If you want, you can delete the model via:
 
 ```console
 az ml model delete --model-id test-model:1
