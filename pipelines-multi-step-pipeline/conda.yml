@@ -3,10 +3,9 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.6.2
+  - python=3.8.5
   - pip:
-    - azureml-defaults
-    - azureml-dataprep[pandas,fuse] # Required for parallel batch scoring (ParallelRunStep)
-    - scikit-learn==0.20.3
-    - pandas==0.25.3
-    - joblib==0.13.2
+    - azureml-defaults>=1.20.0
+    - scikit-learn==0.24.1
+    - pandas==1.2.1
+    - joblib==1.0.0
