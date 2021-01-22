@@ -114,6 +114,8 @@ az ml run submit-script -c config/train-aml-mlflow -e german-credit-train-amlcom
 
 In this case, have a look at Conda environment [`config/conda-mlflow.yml`](config/conda-mlflow.yml).
 
+For more details on using mflow with AML, see [this link](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-use-mlflow).
+
 ### Summary
 
 So in summary, to train a model on AML Compute Cluster, you'll need:
