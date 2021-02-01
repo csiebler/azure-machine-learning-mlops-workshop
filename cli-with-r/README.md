@@ -1,6 +1,6 @@
 # Exercise Instructions
 
-This exercise shows how to train, register, and deploy a R model using the `az ml` CLI. I'd recommend to run these commands in the Jupyter or JupyterLab's Terminal. When using your own laptop, make sure you have the [CLI extension for Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/reference-azure-machine-learning-cli) installed.
+This exercise shows how to train and register a R model using the `az ml` CLI. I'd recommend to run these commands in the Jupyter or JupyterLab's Terminal. When using your own laptop, make sure you have the [CLI extension for Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/reference-azure-machine-learning-cli) installed.
 
 ### Attach to folder for authentication
 
