@@ -1,0 +1,24 @@
+script: train.R
+arguments: [--data_path, /data]
+target: cpu-cluster
+framework: R
+environment:
+  environmentVariables:
+    EXAMPLE_ENV_VAR: EXAMPLE_VALUE
+  python:
+    userManagedDependencies: true
+  docker:
+    enabled: true
+    baseImage: <replace_with_your_ACR>.azurecr.io/r-tutorial:v1
+    sharedVolumes: true
+data:
+  training_dataset:
+    dataLocation:
+      dataset:
+        name: cli-with-r-tutorial
+        version: 1
+    mechanism: download
+    pathOnCompute: /data
+    environmentVariableName: training_dataset
+    createOutputDirectories: false
+    overwrite: false

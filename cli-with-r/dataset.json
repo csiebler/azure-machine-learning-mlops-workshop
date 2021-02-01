@@ -1,0 +1,17 @@
+{
+    "datasetType": "File",
+    "parameters": {
+      "path": [
+        {
+          "datastoreName": "workspaceblobstore",
+          "relativePath": "cli-with-r-tutorial/"
+        }
+      ]
+    },
+    "registration": {
+        "name": "cli-with-r-tutorial",
+        "description": "Dataset for R CLI tutorials",
+        "createNewVersion": true
+    },
+    "schemaVersion": 1
+  }

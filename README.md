@@ -29,6 +29,7 @@ A workshop for doing MLOps on Azure Machine Learning.
 * Model Training & Deployment using CLI
   * :weight_lifting_woman: Exercise - Train a model using the AML CLI (mlflow option included) - [`cli-training`](cli-training/)
   * :weight_lifting_woman: Exercise - Deploy a model to ACI and AKS using the AML CLI - [`cli-deployment`](cli-deployment/)
+  * :weight_lifting_woman: Exercise - Train a R model using the AML CLI - [`cli-with-r`](cli-with-r/)
 
 **Words of caution:**
 The hands-on exercises do not fully embrace concepts like DRY (don't repeat yourself) or other best pratices when it comes to coding standards. Feel free to use them for understanding the concepts, but don't blindly copy and paste them to production.
