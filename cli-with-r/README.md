@@ -42,10 +42,10 @@ Next, we can create a Compute Cluster:
 az ml computetarget create amlcompute -n cpu-cluster --max-nodes 1 -s STANDARD_D3_V2 --idle-seconds-before-scaledown 1800
 ```
 
-Now, since R takes a while to build, it makes sense to pre-built a Docker image with our required libraries. See the provided [`Dockerfile`](./Dockerfile) as an example and feel free to add more dependencies
+Now, since R takes a while to build, it makes sense to pre-built a Docker image with our required libraries. See the provided [`Dockerfile`](./Dockerfile) as an example and feel free to add more dependencies. Locate the name of the Azure Container Registry you want to use (preferably the one of the AML workspace) and run:
 
 ```console
-az acr build --registry amlsharedclemens --image r-tutorial:v1 .
+az acr build --registry <your registry name> --image r-tutorial:v1 .
 ```
 
 Once the build has finished (this might take quite a while), note down the image name (in this example `xxxxxxxxx.azurecr.io/r-tutorial:v1`):
