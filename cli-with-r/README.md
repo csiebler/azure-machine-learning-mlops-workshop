@@ -123,6 +123,10 @@ If you want, you can delete the model via:
 az ml model delete --model-id r-model:1
 ```
 
+## Model deployment
+
+If you want to deploy the created R model, please follow [this tutorial](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks.html).
+
 # Knowledge Check
 
 :question: **Question:** How does the Compute Cluster from where it should the training data?
