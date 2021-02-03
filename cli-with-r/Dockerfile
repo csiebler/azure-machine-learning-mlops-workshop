@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/azureml/base:openmpi3.1.2-ubuntu18.04
 
 # Install R+R Essentials and AzureML defaults
 RUN conda install -c r -y pip=20.1.1 openssl=1.1.1c r-base r-essentials rpy2 && \
-  conda install -c conda-forge -y mscorefonts && \
+    conda install -c conda-forge -y mscorefonts && \
     conda clean -ay && \
     pip install --no-cache-dir azureml-defaults
 
