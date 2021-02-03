@@ -1,0 +1,9 @@
+data/
+.ipynb_checkpoints
+azureml-logs
+.azureml
+.git
+outputs
+azureml-setup
+docs
+Dockerfile
