@@ -12,5 +12,4 @@ parallel_run_config:
   description:
   run_invocation_timeout: 180
   append_row_file_name: batch-predictions.txt
-  environment_name:
-  environment_dir_path: parallel_run_env
+  environment_name: workshop-env
