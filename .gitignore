@@ -4,6 +4,7 @@ temp/
 outputs/
 run.json
 model.json
+config.json
 
 # vscode specific
 

@@ -41,7 +41,7 @@ Then navigate to the cloned folder in Jupyter, and open [`single_step_pipeline.i
 <details>
   <summary>:white_check_mark: See solution!</summary>
 
-It uses the file `runconfig.yml`, which further defines the step's configuration. The runconfig points to `condaDependenciesFile: conda.yml`, which defines the conda enviroment, in which this step is executed in. We could have defined all this in Python, but having the conda enviroment in a separate file, allows us to easier test this locally, e.g., by using:
+It uses the AML environment `workshop-env` which we created in the first step. This environment was created using the `conda.yml`. We could have defined all this in Python, but having the conda enviroment in a separate file, allows us to easier test this locally, e.g., by using:
 
 ```
 conda env create -f conda.yml
