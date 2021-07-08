@@ -20,7 +20,7 @@ You can check the results in the Studio UI (navigate to the run, then select `Ch
 
 ![Hyperdrive in Studio UI](../media/hyperdrive_example.png)
 
-Each Hyperparameter permutation is its own child run.
+Each Hyperparameter permutation will be executed in its own child run.
 
 # Knowledge Check
 
