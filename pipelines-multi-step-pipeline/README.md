@@ -31,3 +31,18 @@ Cons against having multiple steps:
 * More overhead to pass data between steps
 * Long pipelines with many steps might complicated
 </details>
+
+:question: **Question:** When should you use Datasets vs Datapaths?
+<details>
+  <summary>:white_check_mark: See solution!</summary>
+  
+It depends on the use case, but roughly speaking:
+
+Use `Datasets` when:
+* Your data assets are register in AzureML
+* When you prefer direct data lineage within AzureML (click through from data to experiment to model to deployment)
+
+Use `DataPaths` when:
+* You want to call the pipeline from a different tool and there is no need to register the input data as a dataset
+* A typical examples would be e.g., a batch scoring pipeline, called via Azure Data Factory
+</details>
