@@ -35,6 +35,18 @@ Then navigate to the cloned folder in Jupyter, and open [`single_step_pipeline.i
 1. Attach the whole repo to your workspace via `az ml folder attach -w <YOUR WORKSPACE NAME> -g <YOUR RESOURCE GROUP>`
 1. Fire up your favorite notebook experience and get started!
 
+## Quick explanation
+
+![Pipeline With Testing Drawing](../media/pipeline_overview.png)
+
+* Our notebook creates the AzureML pipeline inside the workspace
+* This pipeline exposes a REST API through which it can be invoked
+* During pipeline creation, we define what scripts it should run (here it's just `train.py`)
+* We also specify in which AzureML Environment it should run (this defines the runtime environment our script will run in)
+* Our pipeline is parameterized so we can pass in other datasets if desired (e.g., for retraining with a new dataset)
+* Our pipeline runs on a compute cluster (on-demand spun up when the pipeline is triggered)
+* Our pipeline might output data (e.g., during batch scoring) or registers a model (e.g., during training) - this will be covered in the subsequent examples
+
 # Knowledge Check
 
 :question: **Question:** From where does `train_step = PythonScriptStep(name="train-step", ...)` know which Python dependencies to use?
