@@ -1,0 +1,13 @@
+name: workshop-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8.5
+  - pip:
+    - azureml-defaults>=1.20.0
+    - azureml-monitoring
+    - inference-schema
+    - scikit-learn==0.24.1
+    - pandas==1.2.1
+    - joblib==1.0.0
