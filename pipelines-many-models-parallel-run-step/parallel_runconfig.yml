@@ -1,0 +1,15 @@
+parallel_run_config:
+  input_format:
+  partition_keys: [model]
+  error_threshold: 0
+  output_action: append_row
+  logging_level: INFO
+  compute_target_name: cpu-cluster
+  node_count: 1
+  process_count_per_node: 2
+  entry_script: train_parallel.py
+  source_directory: ./
+  description:
+  run_invocation_timeout: 180
+  append_row_file_name: train_results.txt
+  environment_name: workshop-env
