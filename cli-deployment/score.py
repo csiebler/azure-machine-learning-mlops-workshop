@@ -3,24 +3,6 @@ import json
 import numpy as np
 import pandas as pd
 import joblib
-# Only required if you want to use model data collection
-from inference_schema.schema_decorators import input_schema, output_schema
-from inference_schema.parameter_types.standard_py_parameter_type import StandardPythonParameterType
-from azureml.monitoring import ModelDataCollector
-
-# Automatically generates the swagger interface by providing an data example
-input_sample = [{
-    "Age": 20,
-    "Sex": "male",
-    "Job": 0,
-    "Housing": "own",
-    "Saving accounts": "little",
-    "Checking account": "little",
-    "Credit amount": 100,
-    "Duration": 48,
-    "Purpose": "radio/TV"
-  }]
-output_sample = [[0.7, 0.3]]
 
 def init():
     global model
@@ -30,28 +12,13 @@ def init():
     # AZUREML_MODEL_DIR is injected by AML
     model_dir = os.getenv('AZUREML_MODEL_DIR')
     model = joblib.load(os.path.join(model_dir, model_filename))
-    
-    # Optimal - Configure Data Collection
-    global inputs_dc
-    global predictions_dc
-    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["Age", "Sex", "Job", "Housing", "Saving accounts", "Checking account", "Credit amount", "Duration", "Purpose"])
-    predictions_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["good", "bad"])
 
-# Annotation is used for automatic data conversion to a dataframe, as well as for Swagger interface creation
-@input_schema('data', StandardPythonParameterType(input_sample))
-@output_schema(StandardPythonParameterType(output_sample))
-def run(data):
+def run(raw_data):
     try:
-        # Predict
-        df = pd.DataFrame(data)
-        proba = model.predict_proba(df)
+        data = json.loads(raw_data)['data']
+        input_df = pd.DataFrame.from_dict(data)
+        proba = model.predict_proba(input_df)
         result = {"predict_proba": proba.tolist()}
-
-        # Optional - collection data input & output
-        correlations = inputs_dc.collect(df)
-        predictions_data = predictions_dc.add_correlations(proba, correlations)
-        predictions_dc.collect(predictions_data)
-
         return result
     except Exception as e:
         error = str(e)
