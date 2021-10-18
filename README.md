@@ -27,6 +27,8 @@ A workshop for doing MLOps on Azure Machine Learning.
 * MLOps on Azure DevOps
   * :weight_lifting_woman: Exercise - Deploy AML pipeline as Published Endpoint - [`devops-deploy-simple-pipeline`](devops-deploy-simple-pipeline/)
   * :weight_lifting_woman: Exercise - Deploy AML pipeline as Published Endpoint, automatically test it and then add it to a Pipeline Endpoint - [`devops-deploy-pipeline-with-tests`](devops-deploy-pipeline-with-tests/)
+* Model Deployment using Python
+  * :weight_lifting_woman: Exercise - Deploy a trained model to AKS using the Python SDK - [`python-model-deployment`](python-model-deployment/)
 * Model Training & Deployment using CLI
   * :weight_lifting_woman: Exercise - Train a model using the AML CLI (mlflow option included) - [`cli-training`](cli-training/)
   * :weight_lifting_woman: Exercise - Deploy a model to ACI and AKS using the AML CLI - [`cli-deployment`](cli-deployment/)
