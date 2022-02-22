@@ -155,7 +155,7 @@ trigger:
 - none
 
 pool:
-  vmImage: 'Ubuntu-16.04'
+  vmImage: 'ubuntu-20.04'
 
 variables:
   resourcegroup: 'aml-mlops-workshop' # replace with your resource group (same as you've used for the Service Connection)
