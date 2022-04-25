@@ -1,0 +1,28 @@
+$schema: https://azuremlschemas.azureedge.net/latest/sweepJob.schema.json
+display_name: test-sweep-job
+experiment_name: test-sweep-job
+description: Run a hyperparameter sweep job for Sklearn on german credit dataset.
+sampling_algorithm: random
+type: sweep
+inputs:
+  dataset:
+    path: azureml:german-credit-train-tutorial-v2@latest
+search_space:
+  c:
+    type: choice
+    values:  [0.5, 1, 1.5]
+objective:
+  primary_metric: Test accuracy
+  goal: maximize
+compute: azureml:cpu-cluster
+trial:
+  code: ./
+  command: python train.py 
+          --data-path ${{inputs.dataset}}
+          --c ${{search_space.c}} 
+  environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu@latest
+limits:
+  max_total_trials: 2
+  max_concurrent_trials: 1
+  timeout: 10000
+

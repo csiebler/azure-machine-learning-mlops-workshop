@@ -1,0 +1,5 @@
+$schema: https://azuremlschemas.azureedge.net/latest/data.schema.json
+name: german-credit-train-tutorial-v2
+description: Sample dataset for sweep job testing.
+type: uri_folder
+path: azureml://datastores/workspaceblobstore/paths/german-credit-train-tutorial/
